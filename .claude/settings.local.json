@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:phenomenonstudio.com)",
+      "WebFetch(domain:travel-template-indol.vercel.app)",
+      "WebFetch(domain:portfolio-geethmi.vercel.app)",
+      "Bash(npx create-next-app:*)",
+      "Bash(copy logo.jpg public/logo.jpg)",
+      "Bash(npm install)",
+      "Bash(npm run dev:*)",
+      "Bash(npm install:*)",
+      "Bash(node:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}
