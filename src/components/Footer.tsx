@@ -113,9 +113,6 @@ export default function Footer() {
             <p className="text-xs sm:text-sm text-gray-500">
               © 2024 Antimatter Solutions. All rights reserved.
             </p>
-            <p className="text-xs sm:text-sm text-gray-500 mt-2 sm:mt-0">
-              Designed and developed with ❤️ for growing businesses
-            </p>
           </div>
         </div>
       </div>
