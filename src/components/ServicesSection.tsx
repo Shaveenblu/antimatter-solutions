@@ -151,7 +151,7 @@ export default function ServicesSection() {
                     {service.icon}
                   </div>
                   
-                  <h3 className="text-2xl font-bold text-gray-900 mb-6 relative z-10">
+                  <h3 className="text-2xl font-display font-bold text-gray-900 mb-6 relative z-10">
                     {service.title}
                   </h3>
                   

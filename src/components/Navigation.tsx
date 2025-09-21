@@ -37,13 +37,12 @@ export default function Navigation() {
   const companyItems = [
     { name: "About", desc: "Learn about our story" },
     { name: "Team", desc: "Meet our experts" },
-    { name: "Process", desc: "How we work" },
-    { name: "Awards", desc: "Recognition and achievements" }
+    { name: "Process", desc: "How we work" }
   ];
 
   return (
-    <motion.nav 
-      className="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-xl border-b border-gray-100/50"
+    <motion.nav
+      className="fixed top-0 w-full z-50 backdrop-blur-md bg-white/80 border-b border-gray-200/50 shadow-sm"
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.6, ease: [0.21, 0.47, 0.32, 0.98] }}
@@ -63,7 +62,7 @@ export default function Navigation() {
               height={32}
               className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg"
             />
-            <span className="ml-2 sm:ml-3 text-lg sm:text-xl font-semibold text-gray-900 font-display">
+            <span className="ml-2 sm:ml-3 text-lg sm:text-xl font-semibold text-gray-900">
               <span className="hidden sm:inline">Antimatter Solutions</span>
               <span className="sm:hidden">Antimatter</span>
             </span>
@@ -76,7 +75,7 @@ export default function Navigation() {
               onMouseEnter={() => setActiveDropdown('services')}
               onMouseLeave={() => setActiveDropdown(null)}
             >
-              <motion.button 
+              <motion.button
                 className="flex items-center text-gray-600 hover:text-gray-900 font-medium transition-colors group"
                 whileHover={{ scale: 1.02 }}
               >
@@ -141,8 +140,8 @@ export default function Navigation() {
               </AnimatePresence>
             </div>
 
-            <motion.a 
-              href="#cases" 
+            <motion.a
+              href="#cases"
               className="text-gray-600 hover:text-gray-900 font-medium transition-colors relative group"
               whileHover={{ scale: 1.02 }}
             >
@@ -157,7 +156,7 @@ export default function Navigation() {
               onMouseEnter={() => setActiveDropdown('company')}
               onMouseLeave={() => setActiveDropdown(null)}
             >
-              <motion.button 
+              <motion.button
                 className="flex items-center text-gray-600 hover:text-gray-900 font-medium transition-colors group"
                 whileHover={{ scale: 1.02 }}
               >
@@ -185,7 +184,7 @@ export default function Navigation() {
                     {companyItems.map((item, itemIndex) => (
                       <motion.a 
                         key={item.name}
-                        href="#about" 
+                        href="#services" 
                         className="block p-3 mx-3 rounded-xl hover:bg-gray-50 transition-all duration-200 group"
                         initial={{ opacity: 0, x: -10 }}
                         animate={{ opacity: 1, x: 0 }}
@@ -203,8 +202,8 @@ export default function Navigation() {
               </AnimatePresence>
             </div>
 
-            <motion.a 
-              href="#career" 
+            <motion.a
+              href="#services"
               className="text-gray-600 hover:text-gray-900 font-medium transition-colors relative group"
               whileHover={{ scale: 1.02 }}
             >
@@ -214,8 +213,8 @@ export default function Navigation() {
               />
             </motion.a>
 
-            <motion.a 
-              href="#insights" 
+            <motion.a
+              href="#services"
               className="text-gray-600 hover:text-gray-900 font-medium transition-colors relative group"
               whileHover={{ scale: 1.02 }}
             >
@@ -225,8 +224,8 @@ export default function Navigation() {
               />
             </motion.a>
 
-            <motion.a 
-              href="#contacts" 
+            <motion.a
+              href="#contact"
               className="text-gray-600 hover:text-gray-900 font-medium transition-colors relative group"
               whileHover={{ scale: 1.02 }}
             >
@@ -236,17 +235,16 @@ export default function Navigation() {
               />
             </motion.a>
             
-            <motion.a 
-              href="#contact" 
-              className="bg-gray-900 text-white px-8 py-4 rounded-full font-semibold transition-all duration-300 ml-6"
-              whileHover={{ 
-                scale: 1.05,
-                backgroundColor: "#1f2937",
-                boxShadow: "0 10px 25px rgba(0,0,0,0.2)"
+            <motion.a
+              href="#contact"
+              className="btn-glass-primary text-gray-800 px-8 py-4 rounded-full font-semibold ml-6"
+              whileHover={{
+                scale: 1.05
               }}
               whileTap={{ scale: 0.95 }}
             >
-              Get in touch
+              <span className="relative z-10">Get in touch</span>
+              <div className="absolute inset-1 btn-overlay-cool rounded-full"></div>
             </motion.a>
           </div>
 
@@ -301,36 +299,44 @@ export default function Navigation() {
       {/* Mobile menu */}
       <AnimatePresence>
         {isMenuOpen && (
-          <motion.div 
-            className="lg:hidden border-t border-gray-100 bg-white/95 backdrop-blur-xl"
+          <motion.div
+            className="lg:hidden border-t border-gray-200/50 bg-white/90 backdrop-blur-md"
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3, ease: [0.21, 0.47, 0.32, 0.98] }}
           >
             <div className="px-6 py-8 space-y-6">
-              {['Services', 'Cases', 'Company', 'Career', 'Insights', 'Contacts'].map((item, index) => (
-                <motion.a 
-                  key={item}
-                  href={`#${item.toLowerCase().replace(' ', '-')}`} 
+              {[
+                {name: 'Services', href: '#services'},
+                {name: 'Cases', href: '#cases'},
+                {name: 'Company', href: '#services'},
+                {name: 'Career', href: '#services'},
+                {name: 'Insights', href: '#services'},
+                {name: 'Contact', href: '#contact'}
+              ].map((item, index) => (
+                <motion.a
+                  key={item.name}
+                  href={item.href}
                   className="block text-gray-600 hover:text-gray-900 font-medium py-3 text-lg"
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.3, delay: index * 0.1 }}
                   whileTap={{ scale: 0.98 }}
                 >
-                  {item}
+                  {item.name}
                 </motion.a>
               ))}
-              <motion.a 
-                href="#contact" 
-                className="bg-gray-900 text-white px-8 py-4 rounded-full font-semibold hover:bg-gray-800 transition-colors inline-block mt-6"
+              <motion.a
+                href="#contact"
+                className="btn-glass-primary text-gray-800 px-8 py-4 rounded-full font-semibold inline-block mt-6"
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.3, delay: 0.4 }}
                 whileTap={{ scale: 0.95 }}
               >
-                Get in touch
+                <span className="relative z-10">Get in touch</span>
+                <div className="absolute inset-1 btn-overlay-neutral rounded-full"></div>
               </motion.a>
             </div>
           </motion.div>

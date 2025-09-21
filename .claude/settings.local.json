@@ -9,7 +9,8 @@
       "Bash(npm install)",
       "Bash(npm run dev:*)",
       "Bash(npm install:*)",
-      "Bash(node:*)"
+      "Bash(node:*)",
+      "Bash(copy \"Screenshot (290).png\" \"public/Screenshot (290).png\")"
     ],
     "deny": [],
     "ask": []

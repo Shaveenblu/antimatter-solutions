@@ -26,10 +26,17 @@ export default function ContactSection() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
-    // Simulate form submission
+
+    // Create WhatsApp message
+    const message = `Hi! I'm ${formData.name} from ${formData.company || 'a company'}. I'm interested in ${formData.projectType} services. ${formData.message}`;
+    const whatsappUrl = `https://wa.me/94713760463?text=${encodeURIComponent(message)}`;
+
+    // Open WhatsApp
+    window.open(whatsappUrl, '_blank');
+
+    // Reset form
     setTimeout(() => {
-      alert('Thank you for your message! We\'ll get back to you within 24 hours.');
+      alert('Redirecting to WhatsApp! We\'ll get back to you within 24 hours.');
       setFormData({
         name: '',
         email: '',
@@ -91,12 +98,24 @@ export default function ContactSection() {
                   <div className="flex items-center">
                     <div className="w-8 h-8 sm:w-10 sm:h-10 bg-gray-100 rounded-lg flex items-center justify-center mr-3 sm:mr-4 flex-shrink-0">
                       <svg className="w-4 h-4 sm:w-5 sm:h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                       </svg>
                     </div>
                     <div>
-                      <div className="font-semibold text-gray-900 text-sm sm:text-base">Email</div>
-                      <div className="text-gray-600 text-xs sm:text-sm">hello@antimattersolutions.dev</div>
+                      <div className="font-semibold text-gray-900 text-sm sm:text-base">Phone</div>
+                      <div className="text-gray-600 text-xs sm:text-sm">+94 71 376 0463</div>
+                    </div>
+                  </div>
+
+                  <div className="flex items-center">
+                    <div className="w-8 h-8 sm:w-10 sm:h-10 bg-gray-100 rounded-lg flex items-center justify-center mr-3 sm:mr-4 flex-shrink-0">
+                      <svg className="w-4 h-4 sm:w-5 sm:h-5 text-gray-600" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"/>
+                      </svg>
+                    </div>
+                    <div>
+                      <div className="font-semibold text-gray-900 text-sm sm:text-base">WhatsApp</div>
+                      <div className="text-gray-600 text-xs sm:text-sm">+94 71 376 0463</div>
                     </div>
                   </div>
 
@@ -149,7 +168,9 @@ export default function ContactSection() {
 
           {/* Contact Form */}
           <FadeInUp delay={0.6} className="lg:col-span-2 order-1 lg:order-2">
-            <div className="bg-white rounded-2xl p-6 sm:p-8 lg:p-12 shadow-sm border border-gray-100">
+            <div className="card-glass rounded-2xl p-6 sm:p-8 lg:p-12">
+              <div className="absolute inset-1 card-overlay-neutral rounded-2xl"></div>
+              <div className="relative z-10">
               <form onSubmit={handleSubmit} className="space-y-6 sm:space-y-8">
                 <div className="grid sm:grid-cols-2 gap-4 sm:gap-6">
                   <div>
@@ -215,7 +236,7 @@ export default function ContactSection() {
                     >
                       <option value="landing-page">Landing Page</option>
                       <option value="website">Full Website</option>
-                      <option value="ecommerce">E-commerce</option>
+                      <option value="web-app">Web Application</option>
                       <option value="redesign">Website Redesign</option>
                       <option value="maintenance">Maintenance & Support</option>
                       <option value="other">Other</option>
@@ -242,17 +263,19 @@ export default function ContactSection() {
                 <motion.button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full bg-gray-900 text-white py-3 sm:py-4 px-6 sm:px-8 rounded-full font-semibold hover:bg-gray-800 transition-colors duration-300 disabled:opacity-50 disabled:cursor-not-allowed text-base sm:text-lg"
+                  className="btn-glass-primary w-full text-gray-800 py-3 sm:py-4 px-6 sm:px-8 rounded-full font-semibold disabled:opacity-50 disabled:cursor-not-allowed text-base sm:text-lg"
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                 >
-                  {isSubmitting ? 'Sending message...' : 'Send message'}
+                  <span className="relative z-10">{isSubmitting ? 'Sending message...' : 'Send message'}</span>
+                  <div className="absolute inset-1 btn-overlay-warm rounded-full"></div>
                 </motion.button>
 
                 <p className="text-xs sm:text-sm text-gray-500 text-center">
                   By submitting this form, you agree to our privacy policy. We'll never spam or share your information.
                 </p>
               </form>
+              </div>
             </div>
           </FadeInUp>
         </div>

@@ -5,6 +5,7 @@ import PortfolioSection from '@/components/PortfolioSection';
 import ContactSection from '@/components/ContactSection';
 import Footer from '@/components/Footer';
 import LoadingScreen from '@/components/LoadingScreen';
+import BackToTopButton from '@/components/BackToTopButton';
 
 export default function Home() {
   return (
@@ -17,6 +18,7 @@ export default function Home() {
         <PortfolioSection />
         <ContactSection />
         <Footer />
+        <BackToTopButton />
       </main>
     </>
   );

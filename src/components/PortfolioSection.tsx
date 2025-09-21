@@ -7,40 +7,43 @@ import { FadeInUp, TextReveal } from './AnimationWrapper';
 export default function PortfolioSection() {
   const cases = [
     {
-      title: "Fintech Startup MVP",
-      category: "Pre-seed • Fintech",
-      description: "Helped validate a revolutionary payment solution through rapid prototyping and user testing.",
+      title: "Travel Booking Platform",
+      category: "Web Application • Travel",
+      description: "Comprehensive travel booking platform with destination showcase, intuitive booking flow, and modern design aesthetics.",
       image: "/Screenshot (289).png",
+      liveUrl: "https://travel-template-indol.vercel.app/",
       stats: {
-        timeline: "8 weeks",
-        result: "80% user validation",
-        investment: "$2M raised"
+        timeline: "4 weeks",
+        result: "High conversion",
+        investment: "SEO optimized"
       },
-      services: ["Product Discovery", "Prototype", "User Testing"]
+      services: ["Web Development", "UI/UX Design", "Performance Optimization"]
     },
     {
-      title: "Healthcare Platform",
-      category: "Seed • Healthcare",
-      description: "Built a complete MVP for a telemedicine platform connecting patients with specialists.",
+      title: "Developer Portfolio",
+      category: "Portfolio • Personal Brand",
+      description: "Professional portfolio showcasing software engineering skills, projects, and achievements with engaging interactions.",
       image: "/Screenshot (288).png",
+      liveUrl: "https://portfolio-geethmi.vercel.app/",
       stats: {
-        timeline: "12 weeks", 
-        result: "10,000+ users",
-        investment: "Series A ready"
+        timeline: "2 weeks",
+        result: "Professional brand",
+        investment: "Mobile-first"
       },
-      services: ["Branding", "MVP Development", "Technical Architecture"]
+      services: ["Portfolio Design", "Personal Branding", "Interactive Development"]
     },
     {
-      title: "E-commerce Scale-up",
-      category: "Series A • E-commerce",
-      description: "Redesigned and scaled an existing platform to handle 10x growth and improve conversion rates.",
-      image: "/growtika-FQ3lFA4Zi58-unsplash.jpg",
+      title: "Coffee House Platform",
+      category: "Landing Page • F&B",
+      description: "Modern coffee house website with elegant design, menu showcase, and seamless user experience for coffee enthusiasts.",
+      image: "/Screenshot (290).png",
+      liveUrl: "https://coffee-page-steel.vercel.app/",
       stats: {
-        timeline: "16 weeks",
-        result: "+150% conversion",
-        investment: "10x traffic handled"
+        timeline: "3 weeks",
+        result: "Perfect UX",
+        investment: "100% responsive"
       },
-      services: ["UX Audit", "Product Redesign", "Team Extension"]
+      services: ["Landing Page Design", "UI/UX Design", "Responsive Development"]
     }
   ];
 
@@ -129,15 +132,23 @@ export default function PortfolioSection() {
                     </div>
                   </div>
 
-                  <motion.button
-                    className="inline-flex items-center text-gray-900 font-semibold hover:text-gray-700 transition-colors"
-                    whileHover={{ x: 4 }}
-                  >
-                    View case study
-                    <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                    </svg>
-                  </motion.button>
+                  <div className="flex gap-4">
+                    {caseItem.liveUrl ? (
+                      <motion.a
+                        href={caseItem.liveUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center bg-gray-900 text-white px-6 py-3 rounded-full font-semibold hover:bg-gray-700 transition-colors"
+                        whileHover={{ scale: 1.02 }}
+                        whileTap={{ scale: 0.98 }}
+                      >
+                        View live site
+                        <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                        </svg>
+                      </motion.a>
+                    ) : null}
+                  </div>
                 </div>
               </div>
             </FadeInUp>
